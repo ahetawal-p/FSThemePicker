@@ -12,7 +12,10 @@ export default class App extends React.Component {
 
 
     const getSectionData = (dataBlob, sectionId) => dataBlob[sectionId];
-    const getRowData = (dataBlob, sectionId, rowId) => dataBlob[`${rowId}`];
+    const getRowData = (dataBlob, sectionId, rowId) => {
+                console.log(dataBlob[`${rowId}`]);
+                return dataBlob[`${rowId}`];
+            }
 
     const ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
@@ -70,6 +73,7 @@ export default class App extends React.Component {
   }
 
   renderRow(data) {
+      console.log(data)
       return (<Row data={data} key={data.name} onButtonPress={this._onShowModalPicker.bind(this)}/>)
   }
 
